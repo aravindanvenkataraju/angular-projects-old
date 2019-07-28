@@ -1,0 +1,15 @@
+.warning{
+    margin:auto;
+    width:200px;
+    height:100px;
+    background: yellow;
+    
+}
+.warningtext {
+    margin:auto;
+    text-align: center;
+    border: 3px solid yellow;
+    color:yellow;
+    padding:10px;
+    width:30%;
+  }
