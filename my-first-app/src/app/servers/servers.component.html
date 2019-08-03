@@ -1,3 +1,13 @@
-<button type="button" class="btn btn-primary" [disabled]="!allowNewServer">Add server</button>
+<div class="form-group">
+  <label for="">Server Name</label>
+  <input type="text" class="form-control" name="serverName" id="serverName" aria-describedby="helpId" placeholder="Funky Servotron!"
+         (input)="onUpdateServerName($event)">
+  <small id="helpId" class="form-text text-muted">Entered server name: {{serverName}}</small>
+</div>
+<button type="button" 
+        class="btn btn-primary" 
+        [disabled] = "!allowNewServer"
+        (click) = "onCreateServer()">Add server</button>
+<p>{{ serverCreationStatus }}</p>
 <app-server></app-server>
 <app-server></app-server>
