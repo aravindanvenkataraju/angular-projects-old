@@ -10,7 +10,8 @@ export class ServerComponent{
     serverStatus: string = "offline";
 
     constructor(){
-        this.serverStatus = Math.random() > 0.5 ? "offline" : "online"
+        this.serverStatus = Math.random() > 0.5 ? "offline" : "online";
+        this.serverId = Math.round(Math.random()*100);
     }
 
     getServerStatus(){
