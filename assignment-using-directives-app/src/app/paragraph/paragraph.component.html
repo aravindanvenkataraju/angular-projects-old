@@ -1,0 +1,11 @@
+<button type="button" 
+        class="btn btn-primary"
+        (click) = "toggleParaVisibility()">{{getButtonLabel()}}</button>
+<p *ngIf="toggleParagraphVisibility">
+    This paragraph is being displayed because you clicked the button<br>
+    Good job on clicking that button! <br>
+    Watch the list grow below.......<br>
+</p>
+<p *ngFor="let logs of logArray; let i = index" [ngClass]="{white: i >= 5}" [ngStyle]="{backgroundColor: i >= 5?'blue':''}">
+    {{logs}}
+</p>
