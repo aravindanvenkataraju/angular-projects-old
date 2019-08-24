@@ -4,12 +4,16 @@
   <div class="row">
     <div class="col-md-12">
       <app-server-element *ngFor="let serverElement of serverElements">
-        <div class="panel-heading">{{ serverElement.name }}</div>
-        <div class="panel-body">
-          <p>
-            <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
-            <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
-          </p>
+        <div class="card">
+          <div class="card-header">
+            {{ serverElement.name }}
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+              <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+            </p>
+          </div>
         </div>
       </app-server-element>
     </div>
