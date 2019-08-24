@@ -3,17 +3,14 @@
   <hr>
   <div class="row">
     <div class="col-md-12">
-      <app-server-element *ngFor="let serverElement of serverElements">
-        <div class="card">
-          <div class="card-header">
-            {{ serverElement.name }}
-          </div>
-          <div class="card-body">
-            <p class="card-text">
-              <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
-              <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
-            </p>
-          </div>
+      <button type="button" class="btn btn-primary" (click) = "onChangeFirstElement()">Change First Element</button>
+      <button type="button" class="btn btn-danger" (click) = "onDeleteFirstElement()">Remove First Element</button>
+      <app-server-element *ngFor="let serverElement of serverElements" [serverName] = "serverElement.name">
+        <div class="card-body">
+          <p class="card-text">
+            <strong *ngIf="serverElement.type === 'server'" style="color: red">{{ serverElement.content }}</strong>
+            <em *ngIf="serverElement.type === 'blueprint'">{{ serverElement.content }}</em>
+          </p>
         </div>
       </app-server-element>
     </div>
