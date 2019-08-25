@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <div class="jumbotron-fluid">
-    <app-header></app-header>
+    <app-header (feature)="onNavigate($event)"></app-header>
   </div>
   <hr>
   <div class="row">
     <div class="col-md-12">
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
+      <app-recipes *ngIf="feature === 'recipes'"></app-recipes>
+      <app-shopping-list *ngIf="feature !== 'recipes'"></app-shopping-list>
     </div>
   </div>
 </div>
