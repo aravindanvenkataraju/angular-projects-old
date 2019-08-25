@@ -23,6 +23,7 @@ export class AppComponent {
   startGame(){
     console.log(this);
     console.log("Main Application starts the game..");
+    this.gameNumbers = [];
     this.gameEvent = setInterval(() => this.generateNumber(), 1000);
   }
 
