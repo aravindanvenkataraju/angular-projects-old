@@ -1,0 +1,60 @@
+<div class="accordion" id="assignmentAccordion">
+  <div class="card">
+    <div class="card-header" id="assignmentHeading">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseAssignmentDetail"
+          aria-expanded="true" aria-controls="collapseAssignmentDetail">
+          Assignment Details
+        </button>
+      </h2>
+    </div>
+    <div id="collapseAssignmentDetail" class="collapse show" aria-labelledby="assignmentHeading"
+      data-parent="#assignmentAccordion">
+      <div class="card-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <h3>Bind it!</h3>
+              <ol>
+                <li>Create three new components: GameControl, Odd and Even</li>
+                <li>The GameControl Component should have buttons to start and stop the game</li>
+                <li>When starting the game, an event (holding a incrementing number) should get emitted each second (ref
+                  = setInterval())</li>
+                <li>The event should be listenable from outside the component</li>
+                <li>When stopping the game, no more events should get emitted (clearInterval(ref))</li>
+                <li>A new Odd component should get created for every odd number emitted, the same should happen for the
+                  Even Component (on even numbers)</li>
+                <li>Simply output Odd - NUMBER or Even - NUMBER in the two components</li>
+                <li>Style the element (e.g. paragraph) holding your output text differently in both components</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="solutionHeading">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseSolution"
+          aria-expanded="false" aria-controls="collapseSolution">
+          Solution
+        </button>
+      </h2>
+    </div>
+    <div id="collapseSolution" class="collapse" aria-labelledby="solutionHeading" data-parent="#assignmentAccordion">
+      <div class="card-body">
+        <app-game-control (gameControlEvent)="onGameControlEvent($event)">
+
+        </app-game-control>
+        <div *ngFor="let gameNumber of gameNumbers">
+          <app-even *ngIf="gameNumber%2 == 0; else odd" [number]="gameNumber"></app-even>
+          <ng-template #odd>
+            <app-odd [number]="gameNumber"></app-odd>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
