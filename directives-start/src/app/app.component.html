@@ -1,27 +1,36 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <button class="btn btn-primary" (click)="onlyOdd = !onlyOdd">Only show odd numbers</button>
+      <button class="btn btn-primary"
+        (click)="onlyOdd = !onlyOdd; buttonName = 'Only show '+(onlyOdd?'even':'odd')+' numbers'">{{buttonName}}</button>
       <br><br>
       <ul class="list-group">
         <div *ngFor="let number of numbers">
-          <li class="list-group-item" 
-          *ngIf="number%2 != 0 && onlyOdd" 
-          [ngClass]="{odd: number%2 != 0 && onlyOdd}"
-          [ngStyle]="{backgroundColor: number%2 != 0 && onlyOdd?'yellow':'black'}">
+          <li class="list-group-item" *ngIf="number%2 != 0 && onlyOdd" [ngClass]="{odd: number%2 != 0 && onlyOdd}"
+            [ngStyle]="{backgroundColor: number%2 != 0 && onlyOdd?'yellow':'orange'}">
             {{number}}
           </li>
-          <li class="list-group-item" 
-          *ngIf="number%2 == 0 && !onlyOdd" 
-          [ngClass]="{even: number%2 == 0 && !onlyOdd}"
-          [ngStyle]="{backgroundColor: number%2 != 0 && onlyOdd?'yellow':'black'}">
-              {{number}}
-            </li>
+          <!-- <li class="list-group-item" *ngIf="number%2 == 0 && !onlyOdd" [ngClass]="{even: number%2 == 0 && !onlyOdd}"
+            [ngStyle]="{backgroundColor: number%2 != 0 && onlyOdd?'yellow':'black'}">
+            {{number}}
+          </li> -->
+          <li class="list-group-item" *appUnless="{givenNumber:number,condition:onlyOdd}"
+            [ngClass]="{even: number%2 == 0 && !onlyOdd}"
+            [ngStyle]="{backgroundColor: number%2 != 0 && onlyOdd?'yellow':'orange'}">
+            {{number}}
+          </li>
         </div>
       </ul>
     </div>
   </div>
   <div class="row">
-      <p appBasicHighlight >Style me with basic highlight directive</p>
+    <p appBasicHighlight>Style me with basic highlight directive</p>
+  </div>
+  <div class="row">
+    <p appBetterHighlight defaultColor='yellow' highlightColor='red'>Style me with better highlight directive</p>
+  </div>
+  <div [ngSwitch]="onlyOdd">
+    <div *ngSwitchCase="true">Only odd numbers are shown</div>
+    <div *ngSwitchDefault>Only even numbers are shown</div>
   </div>
 </div>
